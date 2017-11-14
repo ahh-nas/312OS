@@ -10,6 +10,7 @@ public class OS implements Runnable{
 	public static int inputOutput = 0;
 	final int maxMemory = 4096;
 	public static int memoryUsage;
+	public static int memoryLeft;
 	
 	public static void main(String[] args) throws IOException 
 	{
@@ -28,8 +29,15 @@ public class OS implements Runnable{
 public void Process(String nameOfProcess,ArrayList<String> queueIn, int size)
 {
 
-int i = (int)(Math.random());
-Random rand = new Random();
+memoryUsage = (int)(Math.random()*4096+1);
+//Random rand = new Random();
+memoryLeft = maxMemory - memoryUsage;
+if(memoryUsage > memoryLeft)
+ {
+	System.out.println("Not enough space");
+ }
+
+	
 }
 public static int operationCycle()
 {
