@@ -4,6 +4,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public class OS implements Runnable{
 	public static int run = 0;
@@ -11,6 +12,7 @@ public class OS implements Runnable{
 	final int maxMemory = 4096;
 	public static int memoryUsage;
 	public static int memoryLeft;
+	private static int quantum = 10;
 	
 	public static void main(String[] args) throws IOException 
 	{
@@ -20,13 +22,25 @@ public class OS implements Runnable{
 	{
 		threads.add(new Thread());
 	}
-		BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-        String s = bufferRead.readLine();
+		System.out.println("Enter number of processes: ");
+		Scanner userInput = new Scanner(System.in);
+		int input = userInput.nextInt();
+		int proceses[]= new int[input];
+		Scheduler newSched = new Scheduler();
+		newSched.RoundRobin(proceses, quantum, proceses.length);
+		//BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+        //String s = bufferRead.readLine();
 	
 	}
 	private ArrayList<String> queue = new ArrayList<>();
 
-public void Process(String nameOfProcess,ArrayList<String> queueIn, int size)
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+/*public void Process(String nameOfProcess,ArrayList<String> queueIn, int size)
 {
 
 memoryUsage = (int)(Math.random()*4096+1);
@@ -38,7 +52,7 @@ if(memoryUsage > memoryLeft)
  }
 
 	
-}
+}/*
 public static int operationCycle()
 {
 	int cycles = (int)(Math.random()*25+25);
