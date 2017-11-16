@@ -32,22 +32,7 @@ public class Scheduler {
 		        {
 		        	RRdone= false;
 		        }	
-				//for(int t= 0; t<processes.length; t++)
-				 /*for (int k = i+1; k < processes.length; k++) 
-				    {
-				        if (remainingBurstTime[i] != remainingBurstTime[k]) 
-				        {
-				        	RRdone= false;
-				        	 break;
-				        }	
-				        else
-				        {
-				        RRdone = true;	
-				        break;
-				        }
-				    }*/
-				 //if(RRdone==true)
-						//break;
+				
 			 if(remainingBurstTime[i] > quantum)
 			 {
 				 remainingBurstTime[i] -= quantum;

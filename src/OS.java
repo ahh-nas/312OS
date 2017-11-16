@@ -40,7 +40,7 @@ public class OS implements Runnable{
 		
 	}
 
-/*public void Process(String nameOfProcess,ArrayList<String> queueIn, int size)
+public void Process(String nameOfProcess,ArrayList<String> queueIn, int size)
 {
 
 memoryUsage = (int)(Math.random()*4096+1);
