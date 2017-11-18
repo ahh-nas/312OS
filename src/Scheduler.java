@@ -121,17 +121,18 @@ public class Scheduler {
 		completiontime[i] = waittime[i] + bursttime[i];
 		averagewaittime = averagewaittime + waittime[i];
 		}
-	
-			for(int i=0;i<proceses.length;i++) {
+		
+			for(int i=0;i<proceses.length;i++) 
+			{
 				System.out.println("Process: "+(i+1));
 				System.out.println("BurstTime: "+bursttime[i]);
 				System.out.println("WaitTime: "+waittime[i]);
 				System.out.println("");
 			}
-		}
-	
-		}
-//TODO figure out whats wrong with my code then implement switch
+		
+	}
+}
+//TODO figure out what's wrong with my code then implement switch
 				
 		
 		
