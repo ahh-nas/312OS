@@ -1,9 +1,6 @@
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Set;
 import java.util.stream.IntStream;
 
@@ -12,13 +9,12 @@ public class Scheduler {
 	{
 	
 		boolean RRdone= false;
-		int temp = 0;
-		Queue q = new LinkedList();
+	
 		int count= 0;
 		int burstTime[] = new int [n];
 		int remainingBurstTime[]= new int [n];
 		int arivalTime[] = new int[n];
-		ArrayList<String> usedNumbers = new ArrayList<String>();
+	
 		for(int i = 0; i<processes.length; i++)
 		{
 			int Ram =(int) (Math.random()*20+20);
@@ -60,7 +56,7 @@ public class Scheduler {
 			 if(remainingBurstTime[t] > quantum)
 			 {
 				 remainingBurstTime[t] -= quantum;
-				 System.out.println("P"+sortedIndices[t]);
+				 System.out.println("P"+ sortedIndices[t]);
 			 }
 			 
 			 if(remainingBurstTime[t] <= quantum && uniqueList.contains(t))
