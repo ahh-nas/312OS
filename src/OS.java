@@ -5,19 +5,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.CountDownLatch;
 
 public class OS implements Runnable{
 	public static int run = 0;
+	private CountDownLatch latch;
 	public static int inputOutput = 0;
 	final int maxMemory = 4096;
 	public static int memoryUsage;
 	public static int memoryLeft;
 	private static int quantum = 10;
-	
+	 
+
 	public static void main(String[] args) throws IOException 
 	{
 	List<Thread>threads = new ArrayList<Thread>();
-	
+	System.out.println("Available processors (cores): " + Runtime.getRuntime().availableProcessors());
 	for(int i =0; i<4; i++)
 	{
 		threads.add(new Thread());

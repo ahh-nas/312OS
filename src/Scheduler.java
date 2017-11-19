@@ -57,15 +57,15 @@ public class Scheduler {
 		        	RRdone= false;
 		        }	
 				
-			 if(remainingBurstTime[t] > quantum)
+			 if(remainingBurstTime[sortedIndices[t]] > quantum)
 			 {
-				 remainingBurstTime[t] -= quantum;
+				 remainingBurstTime[sortedIndices[t]] -= quantum;
 				 System.out.println("P"+ sortedIndices[t]);
 			 }
 			 
-			 if(remainingBurstTime[t] <= quantum && uniqueList.contains(t))
+			 if(remainingBurstTime[sortedIndices[t]] <= quantum && uniqueList.contains(t))
 			 {
-				 remainingBurstTime[t]-= remainingBurstTime[t];
+				 remainingBurstTime[sortedIndices[t]]-= remainingBurstTime[sortedIndices[t]];
 
 			     
 			        		
