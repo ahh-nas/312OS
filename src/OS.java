@@ -26,11 +26,20 @@ public class OS implements Runnable{
 		Scanner userInput = new Scanner(System.in);
 		int input = userInput.nextInt();
 		int proceses[]= new int[input];
+		System.out.println("Enter which scheduler you'd like to use" +"\n1:Round Robin" +"\n2:First Come First Serve" +"\n3:Shortest Job First");
 		Scheduler newSched = new Scheduler();
+		Scanner sc= new Scanner(System.in);
+		int a = sc.nextInt();
+		switch(a) {
+		case 1:
 		newSched.RoundRobin(proceses, quantum, proceses.length);
+		break;
+		case 2:
+		newSched.FirstComeFistServe(proceses);
+		break;
 		//BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
         //String s = bufferRead.readLine();
-	
+		}
 	}
 	private ArrayList<String> queue = new ArrayList<>();
 

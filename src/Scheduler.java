@@ -1,6 +1,10 @@
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 import java.util.stream.IntStream;
 
@@ -110,4 +114,66 @@ return tempArray;
 	{
  
 	}
+
+
+
+	
+
+
+
+	public static void FirstComeFistServe(int proceses[]) throws IOException
+	{
+		InputStreamReader input = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(input);
+		//System.out.println("Enter the number of processes:");
+		//int n = Integer.parseInt(br.readLine());
+		
+		int bursttime[]= new int[proceses.length];
+		for(int i= 0;i<proceses.length;i++)
+		{
+		Random num = new Random();
+		int a = num.nextInt(50)+1;
+		bursttime[i]=a;
+		}
+		
+		
+		int arrivaltime[]=new int[proceses.length];
+		for(int i=0;i<proceses.length;i++)
+		{
+		System.out.println("Enter the arrival time for process: "+(i+1));
+		arrivaltime[i]=Integer.parseInt(br.readLine());
+		}
+		int waittime[]= new int[proceses.length];
+		waittime[0]=0;
+		for(int i=1;i<proceses.length;i++)
+		{
+			waittime[i] = waittime[i-1] + bursttime[i-1];
+			waittime[i] = waittime[i] - arrivaltime[i];
+		}
+		
+		int completiontime[]=new int[proceses.length];
+		int averagewaittime=0;
+		for(int i=0;i<proceses.length;i++)
+		{
+		completiontime[i] = waittime[i] + bursttime[i];
+		averagewaittime = averagewaittime + waittime[i];
+		}
+		
+			for(int i=0;i<proceses.length;i++) 
+			{
+				System.out.println("Process: "+(i+1));
+				System.out.println("BurstTime: "+bursttime[i]);
+				System.out.println("WaitTime: "+waittime[i]);
+				System.out.println("");
+			}
+		
+	}
 }
+//TODO figure out what's wrong with my code then implement switch
+				
+		
+		
+		
+
+
+
