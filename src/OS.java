@@ -28,6 +28,7 @@ public class OS implements Runnable{
 		int proceses[]= new int[input];
 		System.out.println("Enter which scheduler you'd like to use" +"\n1:Round Robin" +"\n2:First Come First Serve" +"\n3:Shortest Job First");
 		Scheduler newSched = new Scheduler();
+		//TODO use the gui to pick which schduling alg. to use 
 		Scanner sc= new Scanner(System.in);
 		int a = sc.nextInt();
 		switch(a) {

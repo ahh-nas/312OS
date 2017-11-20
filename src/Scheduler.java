@@ -132,7 +132,7 @@ public class Scheduler {
 		
 	}
 }
-//TODO figure out what's wrong with my code then implement switch
+//TODO figure out arrival time
 				
 		
 		
