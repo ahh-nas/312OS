@@ -168,16 +168,16 @@ return tempArray;
 				System.out.println("");
 			}
 	}
-			public static void sjf(int proceses[])
+			public static void sjf(int proceses[]) throws IOException
 			{
-				int process[] = new int[5]; //process array
-				int burstTime[] = new int[5]; //burst time array
-				int waitTime[] = new int[5]; //waiting time or tracker array
-				int arrivalTime[] =  new int [5];
+				int process[] = new int[proceses.length]; //process array
+				int burstTime[] = new int[proceses.length]; //burst time array
+				int waitTime[] = new int[proceses.length]; //waiting time or tracker array
+				int arrivalTime[] =  new int [proceses.length];
 				int temporary, x, total=0; //initializes the int we will use as index
-				
+				InputStreamReader input = new InputStreamReader(System.in);
+				BufferedReader br = new BufferedReader(input);
 				//Scanner scan = new Scanner(System.in); // user input
-				
 				//System.out.println("Enter number of processes:"); 
 				x = proceses.length;
 				
@@ -189,6 +189,8 @@ return tempArray;
 					Random num = new Random();
 					int a = num.nextInt(50)+1;
 					burstTime[i]=a;
+					System.out.println("Enter the arrival time: ");
+					arrivalTime[i]=Integer.parseInt(br.readLine());
 					//burstTime[i] = scan.nextInt();
 					//System.out.println("Enter Process " + (i+1) + " Arrival Time");
 					//arrivalTime[i] = scan.nextInt();

@@ -41,6 +41,9 @@ public class OS implements Runnable{
 		case 2:
 		newSched.FirstComeFistServe(proceses);
 		break;
+		case 3:
+		newSched.sjf(proceses);
+		break;
 		//BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
         //String s = bufferRead.readLine();
 		}
