@@ -47,21 +47,63 @@ int a =0;
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		JTable table = new JTable();
+		JScrollPane spTable = new JScrollPane(table);
+		JPanel panel = new JPanel();
+
+		panel.add(spTable);
 		
 		txtEnterCommand = new JTextField();
+		txtEnterCommand.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 String text = txtEnterCommand.getText();
+				 String array[]=text.split(" ",2); //Splits the user data into two sub strings to separate the job file from the command
+				 
+				 String load = "load";
+				 String exe = "exe";
+				 String proc = "proc";
+				 String mem = "mem";
+				 String exit = "exit";
+				 String reset = "reset";
+				 txtEnterCommand.setText("");//clears the text field after entering
+				 
+				 if (array[0].equals(load)) {
+	            	 System.out.println("loading");
+	             }
+				 
+	             else if(array[0].equals(exe))
+	             {System.out.println("execuitng");}
+				 
+	             else if(array[0].equals(proc))
+	             {System.out.println("Processing");}
+				 
+	             else if(array[0].equals(exit))
+	             {System.exit(0);}
+				 
+	             else if(array[0].equals(mem))
+	             {System.out.println("mem used");}
+				 
+	             else if(array[0].equals(reset))
+	             {}//clear the space
+			}
+		});
+		
+		
+		
 		
 		txtEnterCommand.setColumns(10);
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(txtEnterCommand, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(300, Short.MAX_VALUE))
+					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(234, Short.MAX_VALUE)
 					.addComponent(txtEnterCommand, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
@@ -70,9 +112,5 @@ int a =0;
 
 
 	}
-	public static int getValue(int a)
-	{
-		return a;
 
-	}
 }
