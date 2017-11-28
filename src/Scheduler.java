@@ -1,5 +1,7 @@
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -9,10 +11,20 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.IntStream;
 import javax.swing.*;
+import java.util.*;
 
 public class Scheduler {
-	public static void RoundRobin(int processes[],int quantum, int n )
+	public static void RoundRobin(int processes[],int quantum, int n ) throws IOException
 	{
+		String filePath = "C:/Users/moussazs/Desktop/Paint.txt";
+		BufferedReader br = new BufferedReader(new FileReader(filePath));
+		String line = br.readLine();
+		while (line != null)
+		{
+			System.out.println(line);
+			line = br.readLine();
+		}
+		br.close();
 	
 		boolean RRdone= false;
 	

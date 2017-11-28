@@ -9,6 +9,10 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -20,6 +24,8 @@ public class GUI extends JFrame {
 int a =0;
 	private JPanel contentPane;
 	private JTextField txtEnterCommand;
+	
+
 	
 
 	/**
@@ -37,6 +43,7 @@ int a =0;
 			}
 		});
 	}
+
 
 	/**
 	 * Create the frame.
