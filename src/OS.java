@@ -7,6 +7,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.CountDownLatch;
 
+
 public class OS implements Runnable{
 	public static int run = 0;
 	private CountDownLatch latch;
@@ -34,6 +35,9 @@ public class OS implements Runnable{
 		//TODO use the gui to pick which schduling alg. to use 
 		Scanner sc= new Scanner(System.in);
 		int a = sc.nextInt();
+		
+		//GUI.getValues();
+		//int b = GUI.getValue(a);
 		switch(a) {
 		case 1:
 		newSched.RoundRobin(proceses, quantum, proceses.length);

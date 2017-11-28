@@ -8,6 +8,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.IntStream;
+import javax.swing.*;
 
 public class Scheduler {
 	public static void RoundRobin(int processes[],int quantum, int n )
