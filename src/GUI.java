@@ -19,11 +19,13 @@ import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class GUI extends JFrame {
 int a =0;
 	private JPanel contentPane;
 	private JTextField txtEnterCommand;
+	private JTable table_1;
 	
 
 	
@@ -100,18 +102,39 @@ int a =0;
 		
 		txtEnterCommand.setColumns(10);
 		
+		table_1 = new JTable();
+		table_1.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, "", "", null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+			},
+			new String[] {
+				"Process", "Size", "Arrival Time", "Run Time", "Status", "Last Command"
+			}
+		));
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(txtEnterCommand, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(table_1, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+						.addComponent(txtEnterCommand, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(234, Short.MAX_VALUE)
+					.addGap(42)
+					.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 160, Short.MAX_VALUE)
+					.addGap(18)
 					.addComponent(txtEnterCommand, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
