@@ -30,17 +30,25 @@ int a =0;
 	private JPanel contentPane;
 	private JTextField txtEnterCommand;
 	private JTable table_1;
+
+    	
+	public String[] array;
+	public String  thing;
+	
 	private JLabel lblArrivalTime;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
 	private JLabel lblLastCommand;
-	
 
 	
-
+ public  String[] command;
 	/**
 	 * Launch the application.
 	 */
+ public void getValue()
+ {
+	 System.out.println("values is: "+ thing);
+ }
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -52,14 +60,15 @@ int a =0;
 				}
 			}
 		});
+	
 	}
-
 
 	/**
 	 * Create the frame.
+	 * @return 
 	 */
 	public GUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -73,22 +82,58 @@ int a =0;
 		JTextPane textPane = new JTextPane();
 		
 		txtEnterCommand = new JTextField();
+		
 		txtEnterCommand.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				 String text = txtEnterCommand.getText();
-				 String array[]=text.split(" ",2); //Splits the user data into two sub strings to separate the job file from the command
-				 
+				
+				  array=text.split(" ",2); //Splits the user data into two sub strings to separate the job file from the command
+				  
+				  int mid = text.length() / 2; //get the middle of the String
+				 String[] parts = {text.substring(0, mid),text.substring(mid)};
+				 thing = parts[1];
 				 String load = "load";
 				 String exe = "exe";
 				 String proc = "proc";
 				 String mem = "mem";
 				 String exit = "exit";
 				 String reset = "reset";
+<<<<<<< HEAD
+					//System.out.println(thing);
+				 txtEnterCommand.setText("");//clears the text field after entering
+=======
 				
+>>>>>>> branch 'master' of https://github.com/ahh-nas/312OS.git
 				 
+<<<<<<< HEAD
+				 
+				/* switch(text.toLowerCase())
+				 {
+				 case "load":
+					 thing = parts[1];
+					 return;
+				 case "exe":
+				 case "proc":
+				 case "mem":
+				 case "exit":
+				 case "reset":
+					 
+				 }*/
+				 
+				if (array[0].equals(load)) {
+					
+				 
+				//	command=text.split(" ",2);
+					 //array[0] = String.parseString( text.split(" ",2);
+					 thing = parts[1];
+					return;
+	            	// System.out.println("loading");
+=======
 				 if (array[0].equals(load)) {
 	            	 System.out.println("loading");
 	            	 textPane.setText(txtEnterCommand.getText());
+>>>>>>> branch 'master' of https://github.com/ahh-nas/312OS.git
 	             }
 				 
 	             else if(array[0].equals(exe))
@@ -115,10 +160,11 @@ int a =0;
 				 
 				 txtEnterCommand.setText("");//clears the text field after entering
 			}
+			
 		});
-		
-		
-		
+			
+	
+		//array[0]=text.split(" ",2);
 		
 		txtEnterCommand.setColumns(10);
 		
@@ -127,7 +173,11 @@ int a =0;
 		table_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		table_1.setModel(new DefaultTableModel(
 			new Object[][] {
+
+				{thing, null , "", "", null, null},
+
 				{"array[1]", 1000000, "ditto", "sadf", "adsf", "asdf"},
+
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
