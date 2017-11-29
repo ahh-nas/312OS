@@ -79,6 +79,7 @@ int a =0;
 		
 		
 		JTextPane textPane = new JTextPane();
+		textPane.setEditable(false);
 		
 		txtEnterCommand = new JTextField();
 		
@@ -98,7 +99,6 @@ int a =0;
 				 String reset = "reset";
 
 				
-				 txtEnterCommand.setText("");//clears the text field after entering
 	 
 				
 				 
@@ -129,8 +129,6 @@ int a =0;
 				  
 	             else
 	             {JOptionPane.showMessageDialog(null, "Invalid command");}
-				 
-				 
 				 txtEnterCommand.setText("");//clears the text field after entering
 			}
 		});
