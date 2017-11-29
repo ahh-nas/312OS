@@ -20,19 +20,35 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import javax.swing.border.EtchedBorder;
+import java.awt.Font;
 
 public class GUI extends JFrame {
 int a =0;
 	private JPanel contentPane;
 	private JTextField txtEnterCommand;
 	private JTable table_1;
+
     	
 	public String[] array;
+	public String  thing;
+	
+	private JLabel lblArrivalTime;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblLastCommand;
+
 	
  public  String[] command;
 	/**
 	 * Launch the application.
 	 */
+ public void getValue()
+ {
+	 System.out.println("values is: "+ thing);
+ }
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -60,32 +76,51 @@ int a =0;
 		JTable table = new JTable();
 		JScrollPane spTable = new JScrollPane(table);
 		JPanel panel = new JPanel();
-
 		panel.add(spTable);
 		
 		txtEnterCommand = new JTextField();
+		
 		txtEnterCommand.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				 String text = txtEnterCommand.getText();
 				
-				  //array[]=text.split(" ",2); //Splits the user data into two sub strings to separate the job file from the command
-				 
+				  array=text.split(" ",2); //Splits the user data into two sub strings to separate the job file from the command
+				  
+				  int mid = text.length() / 2; //get the middle of the String
+				 String[] parts = {text.substring(0, mid),text.substring(mid)};
+				 thing = parts[1];
 				 String load = "load";
 				 String exe = "exe";
 				 String proc = "proc";
 				 String mem = "mem";
 				 String exit = "exit";
 				 String reset = "reset";
+					//System.out.println(thing);
 				 txtEnterCommand.setText("");//clears the text field after entering
 				 
-				 if (array[0].equals(load)) {
+				 
+				/* switch(text.toLowerCase())
+				 {
+				 case "load":
+					 thing = parts[1];
+					 return;
+				 case "exe":
+				 case "proc":
+				 case "mem":
+				 case "exit":
+				 case "reset":
+					 
+				 }*/
+				 
+				if (array[0].equals(load)) {
 					
 				 
-					command=text.split(" ",2);
-					 array = text.split(" ",2);
-				 
-	            	 System.out.println("loading");
+				//	command=text.split(" ",2);
+					 //array[0] = String.parseString( text.split(" ",2);
+					 thing = parts[1];
+					return;
+	            	// System.out.println("loading");
 	             }
 				 
 	             else if(array[0].equals(exe))
@@ -102,18 +137,26 @@ int a =0;
 				 
 	             else if(array[0].equals(reset))
 	             {}//clear the space
+				 
 			}
+			
 		});
-		
-		
+			
+	
 		//array[0]=text.split(" ",2);
 		
 		txtEnterCommand.setColumns(10);
 		
 		table_1 = new JTable();
+		table_1.setEnabled(false);
+		table_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		table_1.setModel(new DefaultTableModel(
 			new Object[][] {
-				{array[0], null , "", "", null, null},
+
+				{thing, null , "", "", null, null},
+
+				{"array[1]", 1000000, "ditto", "sadf", "adsf", "asdf"},
+
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
@@ -127,21 +170,62 @@ int a =0;
 			}
 		));
 		
+		JLabel lblProcess = new JLabel("Process");
+		lblProcess.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		
+		JLabel lblSize = new JLabel("Size");
+		lblSize.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		
+		lblArrivalTime = new JLabel("Arrival Time");
+		lblArrivalTime.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		
+		lblNewLabel = new JLabel("Run Time");
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		
+		lblNewLabel_1 = new JLabel("Status");
+		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		
+		lblLastCommand = new JLabel("Last Command");
+		lblLastCommand.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(table_1, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
-						.addComponent(txtEnterCommand, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(txtEnterCommand, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(table_1, GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE))
+							.addContainerGap())
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblProcess)
+							.addGap(34)
+							.addComponent(lblSize)
+							.addGap(30)
+							.addComponent(lblArrivalTime)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(lblNewLabel)
+							.addPreferredGap(ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+							.addComponent(lblNewLabel_1)
+							.addGap(18)
+							.addComponent(lblLastCommand)
+							.addGap(20))))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(42)
-					.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 160, Short.MAX_VALUE)
+					.addGap(20)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblSize)
+						.addComponent(lblProcess)
+						.addComponent(lblLastCommand)
+						.addComponent(lblNewLabel_1)
+						.addComponent(lblArrivalTime)
+						.addComponent(lblNewLabel))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 176, Short.MAX_VALUE)
 					.addGap(18)
 					.addComponent(txtEnterCommand, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
@@ -150,5 +234,4 @@ int a =0;
 
 
 	}
-
 }
