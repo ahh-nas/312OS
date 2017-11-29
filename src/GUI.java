@@ -77,9 +77,10 @@ int a =0;
 		JPanel panel = new JPanel();
 		panel.add(spTable);
 		
-		txtEnterCommand = new JTextField();
+		
 		JTextArea textArea = new JTextArea();
 		textArea.setEditable(false);
+		txtEnterCommand = new JTextField();
 		txtEnterCommand.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -99,12 +100,12 @@ int a =0;
 
 				 if (array[0].equals(load)) {
 	            	 System.out.println("loading");
-	            	 textArea.append(txtEnterCommand.getText()+"\n");
-
+	            	 //textArea.append(txtEnterCommand.getText()+"\n");
+              
 	             }
 				 
 	             else if(array[0].equals(exe))
-	             {System.out.println("execuitng");
+	             {System.out.println("executing");
 	             textArea.append(txtEnterCommand.getText()+"\n");}
 				 
 	             else if(array[0].equals(proc))
@@ -124,14 +125,16 @@ int a =0;
 	             else
 	             {JOptionPane.showMessageDialog(null, "Invalid command");}
 				 txtEnterCommand.setText("");//clears the text field after entering
+				 return;
 			}
+		
 		});
 			
 		
 			
 	
 		//array[0]=text.split(" ",2);
-		
+		System.out.println(thing);
 		txtEnterCommand.setColumns(10);
 		
 		table_1 = new JTable();
@@ -142,9 +145,8 @@ int a =0;
 
 				{thing, null , "", "", null, null},
 
-				{array, 1000000, "ditto", "sadf", "adsf", "asdf"},
-
-				{null, null, null, null, null, null},
+				{"tears", 1000000, "ditto", "sadf", "adsf", "asdf"},
+				{"in my eyes", null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
@@ -158,22 +160,22 @@ int a =0;
 		));
 		
 		JLabel lblProcess = new JLabel("Process");
-		lblProcess.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		lblProcess.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		
 		JLabel lblSize = new JLabel("Size");
-		lblSize.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		lblSize.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		
 		lblArrivalTime = new JLabel("Arrival Time");
-		lblArrivalTime.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		lblArrivalTime.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		
 		lblNewLabel = new JLabel("Run Time");
-		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		
 		lblNewLabel_1 = new JLabel("Status");
-		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		
 		lblLastCommand = new JLabel("Last Command");
-		lblLastCommand.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		lblLastCommand.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		
 		
 		
@@ -189,20 +191,20 @@ int a =0;
 						.addComponent(textArea, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
 						.addComponent(table_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
 						.addComponent(txtEnterCommand, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(8)
 							.addComponent(lblProcess)
-							.addGap(30)
+							.addPreferredGap(ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
 							.addComponent(lblSize)
-							.addGap(26)
+							.addGap(39)
 							.addComponent(lblArrivalTime)
-							.addGap(18)
-							.addComponent(lblNewLabel)
-							.addPreferredGap(ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+							.addGap(33)
 							.addComponent(lblNewLabel_1)
+							.addGap(44)
+							.addComponent(lblNewLabel)
 							.addGap(18)
 							.addComponent(lblLastCommand)
-							.addGap(14)))
+							.addGap(23)))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
@@ -210,11 +212,11 @@ int a =0;
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(20)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_1)
-						.addComponent(lblArrivalTime)
 						.addComponent(lblProcess)
 						.addComponent(lblLastCommand)
 						.addComponent(lblNewLabel)
+						.addComponent(lblNewLabel_1)
+						.addComponent(lblArrivalTime)
 						.addComponent(lblSize))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE)

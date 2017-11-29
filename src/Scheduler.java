@@ -16,10 +16,10 @@ import java.util.*;
 public class Scheduler {
 	public static void RoundRobin(int processes[],int quantum, int n ) throws IOException
 	{
-		// can you see it now?
 		String filePath = "C:/Users/moussazs/Desktop/Paint.txt";
 		BufferedReader br = new BufferedReader(new FileReader(filePath));
 		String line = br.readLine();
+		int test;
 		while (line != null)
 		{
 			//System.out.println(line);
@@ -27,24 +27,29 @@ public class Scheduler {
 			String command[]=line.split(" ",2);
 			if (command[0].equals("CALCULATE")) {
 				String numberOfCycles;
-            numberOfCycles = command[1];
-           	 System.out.println(numberOfCycles);
+				numberOfCycles = command[1];
+				test = Integer.parseInt(numberOfCycles);
+				while(test != 0)
+				{
+					test--;
+				}
+				System.out.println(numberOfCycles);
             }
 			 
             else if(command[0].equals("YIELD"))
             {
-               System.out.println("YIELDING");
+            		System.out.println("YIELDING");
             }
 			 
             else if(command[0].equals("IO"))
             {
-               System.out.println("BLOCKED");
+            		System.out.println("BLOCKED");
             }
 			 
             else if(command[0].equals("OUT"))
             {
             	
-            	System.out.println(command[1]);
+            		System.out.println(command[1]);
             
             }
 			 
