@@ -14,6 +14,10 @@ import javax.swing.*;
 import java.util.*;
 
 public class Scheduler {
+	public static String readLine(String s)
+	{
+		return s;
+	}
 	public static void RoundRobin(int processes[],int quantum, int n ) throws IOException
 	{
 		// can you see it now?
@@ -24,6 +28,7 @@ public class Scheduler {
 		{
 			System.out.println(line);
 			line = br.readLine();
+			
 		}
 		br.close();
 	

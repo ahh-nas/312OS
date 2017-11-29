@@ -26,10 +26,10 @@ int a =0;
 	private JPanel contentPane;
 	private JTextField txtEnterCommand;
 	private JTable table_1;
+    	
+	public String[] array;
 	
-
-	
-
+ public  String[] command;
 	/**
 	 * Launch the application.
 	 */
@@ -44,14 +44,15 @@ int a =0;
 				}
 			}
 		});
+	
 	}
-
 
 	/**
 	 * Create the frame.
+	 * @return 
 	 */
 	public GUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -64,9 +65,11 @@ int a =0;
 		
 		txtEnterCommand = new JTextField();
 		txtEnterCommand.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				 String text = txtEnterCommand.getText();
-				 String array[]=text.split(" ",2); //Splits the user data into two sub strings to separate the job file from the command
+				
+				  //array[]=text.split(" ",2); //Splits the user data into two sub strings to separate the job file from the command
 				 
 				 String load = "load";
 				 String exe = "exe";
@@ -77,6 +80,11 @@ int a =0;
 				 txtEnterCommand.setText("");//clears the text field after entering
 				 
 				 if (array[0].equals(load)) {
+					
+				 
+					command=text.split(" ",2);
+					 array = text.split(" ",2);
+				 
 	            	 System.out.println("loading");
 	             }
 				 
@@ -98,14 +106,14 @@ int a =0;
 		});
 		
 		
-		
+		//array[0]=text.split(" ",2);
 		
 		txtEnterCommand.setColumns(10);
 		
 		table_1 = new JTable();
 		table_1.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, "", "", null, null},
+				{array[0], null , "", "", null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
