@@ -23,12 +23,17 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.border.EtchedBorder;
+import java.awt.Font;
 
 public class GUI extends JFrame {
 int a =0;
 	private JPanel contentPane;
 	private JTextField txtEnterCommand;
 	private JTable table_1;
+	private JLabel lblArrivalTime;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblLastCommand;
 	
 
 	
@@ -110,7 +115,7 @@ int a =0;
 		table_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		table_1.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"array[1]", 1000000, "", "", null, null},
+				{"array[1]", 1000000, "ditto", "sadf", "adsf", "asdf"},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
@@ -124,21 +129,62 @@ int a =0;
 			}
 		));
 		
+		JLabel lblProcess = new JLabel("Process");
+		lblProcess.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		
+		JLabel lblSize = new JLabel("Size");
+		lblSize.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		
+		lblArrivalTime = new JLabel("Arrival Time");
+		lblArrivalTime.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		
+		lblNewLabel = new JLabel("Run Time");
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		
+		lblNewLabel_1 = new JLabel("Status");
+		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		
+		lblLastCommand = new JLabel("Last Command");
+		lblLastCommand.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(txtEnterCommand, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(table_1, GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE))
-					.addContainerGap())
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(txtEnterCommand, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(table_1, GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE))
+							.addContainerGap())
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblProcess)
+							.addGap(34)
+							.addComponent(lblSize)
+							.addGap(30)
+							.addComponent(lblArrivalTime)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(lblNewLabel)
+							.addPreferredGap(ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+							.addComponent(lblNewLabel_1)
+							.addGap(18)
+							.addComponent(lblLastCommand)
+							.addGap(20))))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(42)
-					.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 174, Short.MAX_VALUE)
+					.addGap(20)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblSize)
+						.addComponent(lblProcess)
+						.addComponent(lblLastCommand)
+						.addComponent(lblNewLabel_1)
+						.addComponent(lblArrivalTime)
+						.addComponent(lblNewLabel))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 176, Short.MAX_VALUE)
 					.addGap(18)
 					.addComponent(txtEnterCommand, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
@@ -147,5 +193,4 @@ int a =0;
 
 
 	}
-
 }
