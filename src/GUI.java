@@ -41,14 +41,11 @@ int a =0;
 	private JLabel lblLastCommand;
 
 	
- public  String[] command;
+
 	/**
 	 * Launch the application.
 	 */
- public void getValue()
- {
-	 System.out.println("values is: "+ thing);
- }
+ 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -62,6 +59,8 @@ int a =0;
 		});
 	
 	}
+
+
 
 	/**
 	 * Create the frame.
@@ -87,10 +86,8 @@ int a =0;
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				 String text = txtEnterCommand.getText();
-				
 				  array=text.split(" ",2); //Splits the user data into two sub strings to separate the job file from the command
-				  
-				  int mid = text.length() / 2; //get the middle of the String
+				 int mid = text.length() / 2; //get the middle of the String
 				 String[] parts = {text.substring(0, mid),text.substring(mid)};
 				 thing = parts[1];
 				 String load = "load";
@@ -99,41 +96,17 @@ int a =0;
 				 String mem = "mem";
 				 String exit = "exit";
 				 String reset = "reset";
-<<<<<<< HEAD
-					//System.out.println(thing);
-				 txtEnterCommand.setText("");//clears the text field after entering
-=======
+
 				
->>>>>>> branch 'master' of https://github.com/ahh-nas/312OS.git
+				 txtEnterCommand.setText("");//clears the text field after entering
+	 
+				
 				 
-<<<<<<< HEAD
-				 
-				/* switch(text.toLowerCase())
-				 {
-				 case "load":
-					 thing = parts[1];
-					 return;
-				 case "exe":
-				 case "proc":
-				 case "mem":
-				 case "exit":
-				 case "reset":
-					 
-				 }*/
-				 
-				if (array[0].equals(load)) {
-					
-				 
-				//	command=text.split(" ",2);
-					 //array[0] = String.parseString( text.split(" ",2);
-					 thing = parts[1];
-					return;
-	            	// System.out.println("loading");
-=======
+
 				 if (array[0].equals(load)) {
 	            	 System.out.println("loading");
 	            	 textPane.setText(txtEnterCommand.getText());
->>>>>>> branch 'master' of https://github.com/ahh-nas/312OS.git
+
 	             }
 				 
 	             else if(array[0].equals(exe))
@@ -160,8 +133,9 @@ int a =0;
 				 
 				 txtEnterCommand.setText("");//clears the text field after entering
 			}
-			
 		});
+			
+		
 			
 	
 		//array[0]=text.split(" ",2);
@@ -260,7 +234,8 @@ int a =0;
 					.addContainerGap())
 		);
 		contentPane.setLayout(gl_contentPane);
-
-
-	}
+		}
 }
+
+	
+
