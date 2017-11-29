@@ -14,10 +14,6 @@ import javax.swing.*;
 import java.util.*;
 
 public class Scheduler {
-	public static String readLine(String s)
-	{
-		return s;
-	}
 	public static void RoundRobin(int processes[],int quantum, int n ) throws IOException
 	{
 		// can you see it now?
@@ -26,26 +22,35 @@ public class Scheduler {
 		String line = br.readLine();
 		while (line != null)
 		{
-			System.out.println(line);
+			//System.out.println(line);
 			line = br.readLine();
-
 			String command[]=line.split(" ",2);
 			if (command[0].equals("CALCULATE")) {
-           	 //System.out.println("calcualting");
+				String numberOfCycles;
+            numberOfCycles = command[1];
+           	 System.out.println(numberOfCycles);
             }
 			 
-            else if(command[0].equals("YEILD"))
-            {System.out.println("yeilding");}
+            else if(command[0].equals("YIELD"))
+            {
+               System.out.println("YIELDING");
+            }
 			 
             else if(command[0].equals("IO"))
-            {System.out.println("ioing");}
+            {
+               System.out.println("BLOCKED");
+            }
 			 
             else if(command[0].equals("OUT"))
-            {System.out.println("outing");}
+            {
+            	
+            	System.out.println(command[1]);
+            
+            }
 			 
   
-
 		}
+
 		br.close();
 	
 		boolean RRdone= false;
