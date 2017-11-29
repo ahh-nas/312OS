@@ -31,7 +31,7 @@ public class Scheduler {
 
 			String command[]=line.split(" ",2);
 			if (command[0].equals("CALCULATE")) {
-           	 System.out.println("calcualting");
+           	 //System.out.println("calcualting");
             }
 			 
             else if(command[0].equals("YEILD"))

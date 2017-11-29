@@ -78,6 +78,9 @@ int a =0;
 		JPanel panel = new JPanel();
 		panel.add(spTable);
 		
+		
+		JTextPane textPane = new JTextPane();
+		
 		txtEnterCommand = new JTextField();
 		
 		txtEnterCommand.addActionListener(new ActionListener() {
@@ -96,9 +99,14 @@ int a =0;
 				 String mem = "mem";
 				 String exit = "exit";
 				 String reset = "reset";
+<<<<<<< HEAD
 					//System.out.println(thing);
 				 txtEnterCommand.setText("");//clears the text field after entering
+=======
+				
+>>>>>>> branch 'master' of https://github.com/ahh-nas/312OS.git
 				 
+<<<<<<< HEAD
 				 
 				/* switch(text.toLowerCase())
 				 {
@@ -121,23 +129,39 @@ int a =0;
 					 thing = parts[1];
 					return;
 	            	// System.out.println("loading");
+=======
+				 if (array[0].equals(load)) {
+	            	 System.out.println("loading");
+	            	 textPane.setText(txtEnterCommand.getText());
+>>>>>>> branch 'master' of https://github.com/ahh-nas/312OS.git
 	             }
 				 
 	             else if(array[0].equals(exe))
-	             {System.out.println("execuitng");}
+	             {System.out.println("execuitng");
+	             textPane.setText(txtEnterCommand.getText());}
 				 
 	             else if(array[0].equals(proc))
-	             {System.out.println("Processing");}
+	             {System.out.println("Processing");
+	             textPane.setText(txtEnterCommand.getText());}
 				 
 	             else if(array[0].equals(exit))
-	             {System.exit(0);}
+	             {textPane.setText(txtEnterCommand.getText());
+	            	 System.exit(0);}
 				 
 	             else if(array[0].equals(mem))
-	             {System.out.println("mem used");}
+	             {System.out.println("mem used");
+	             textPane.setText(txtEnterCommand.getText());}
 				 
 	             else if(array[0].equals(reset))
-	             {}//clear the space
+	             {textPane.setText(txtEnterCommand.getText());}//clear the space
 				 
+				 
+				 
+	             else
+	             {JOptionPane.showMessageDialog(null, "Invalid command");}
+				 
+				 
+				 txtEnterCommand.setText("");//clears the text field after entering
 			}
 			
 		});
@@ -188,6 +212,9 @@ int a =0;
 		lblLastCommand = new JLabel("Last Command");
 		lblLastCommand.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
 		
+	
+		
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -196,7 +223,10 @@ int a =0;
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(txtEnterCommand, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(txtEnterCommand, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)
+									.addComponent(textPane, GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE))
 								.addComponent(table_1, GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE))
 							.addContainerGap())
 						.addGroup(gl_contentPane.createSequentialGroup()
@@ -207,7 +237,7 @@ int a =0;
 							.addComponent(lblArrivalTime)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(lblNewLabel)
-							.addPreferredGap(ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
 							.addComponent(lblNewLabel_1)
 							.addGap(18)
 							.addComponent(lblLastCommand)
@@ -226,8 +256,10 @@ int a =0;
 						.addComponent(lblNewLabel))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 176, Short.MAX_VALUE)
-					.addGap(18)
-					.addComponent(txtEnterCommand, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addComponent(txtEnterCommand, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		contentPane.setLayout(gl_contentPane);
