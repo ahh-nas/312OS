@@ -20,6 +20,9 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import javax.swing.border.EtchedBorder;
 
 public class GUI extends JFrame {
 int a =0;
@@ -59,7 +62,6 @@ int a =0;
 		JTable table = new JTable();
 		JScrollPane spTable = new JScrollPane(table);
 		JPanel panel = new JPanel();
-
 		panel.add(spTable);
 		
 		txtEnterCommand = new JTextField();
@@ -94,6 +96,7 @@ int a =0;
 				 
 	             else if(array[0].equals(reset))
 	             {}//clear the space
+				 
 			}
 		});
 		
@@ -103,9 +106,11 @@ int a =0;
 		txtEnterCommand.setColumns(10);
 		
 		table_1 = new JTable();
+		table_1.setEnabled(false);
+		table_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		table_1.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, "", "", null, null},
+				{"array[1]", 1000000, "", "", null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
@@ -125,15 +130,15 @@ int a =0;
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(table_1, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
-						.addComponent(txtEnterCommand, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(txtEnterCommand, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(table_1, GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(42)
-					.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 160, Short.MAX_VALUE)
+					.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 174, Short.MAX_VALUE)
 					.addGap(18)
 					.addComponent(txtEnterCommand, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())

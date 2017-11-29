@@ -24,6 +24,21 @@ public class Scheduler {
 		{
 			System.out.println(line);
 			line = br.readLine();
+			String command[]=line.split(" ",2);
+			if (command[0].equals("CALCULATE")) {
+           	 System.out.println("calcualting");
+            }
+			 
+            else if(command[0].equals("YEILD"))
+            {System.out.println("yeilding");}
+			 
+            else if(command[0].equals("IO"))
+            {System.out.println("ioing");}
+			 
+            else if(command[0].equals("OUT"))
+            {System.out.println("outing");}
+			 
+  
 		}
 		br.close();
 	
