@@ -98,11 +98,7 @@ int a =0;
 	             else if(array[0].equals(proc))
 	             {System.out.println("Processing");
 	             textPane.setText(txtEnterCommand.getText());}
-				 
-	             else if(array[0].equals(exit))
-	             {textPane.setText(txtEnterCommand.getText());
-	            	 System.exit(0);}
-				 
+				 			 
 	             else if(array[0].equals(mem))
 	             {System.out.println("mem used");
 	             textPane.setText(txtEnterCommand.getText());}
@@ -110,8 +106,9 @@ int a =0;
 	             else if(array[0].equals(reset))
 	             {textPane.setText(txtEnterCommand.getText());}//clear the space
 				 
-				 
-				 
+				 else if(array[0].equals(exit))
+	             {System.exit(0);} 
+				  
 	             else
 	             {JOptionPane.showMessageDialog(null, "Invalid command");}
 				 
