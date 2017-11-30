@@ -12,7 +12,7 @@ public class OS implements Runnable{
 	public static int run = 0;
 	private CountDownLatch latch;
 	public static int inputOutput = 0;
-	final int maxMemory = 4096;
+	final static int maxMemory = 4096;
 	public static int memoryUsage;
 	public static int memoryLeft;
 	private static int quantum = 10;
@@ -50,7 +50,9 @@ public class OS implements Runnable{
 		break;
 		//BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
         //String s = bufferRead.readLine();
+		
 		}
+		newSched.jobHandle();
 	}
 	private ArrayList<String> queue = new ArrayList<>();
 
@@ -60,40 +62,42 @@ public class OS implements Runnable{
 		
 	}
 
-public void Process(String nameOfProcess,ArrayList<String> queueIn, int size)
-{
 
-memoryUsage = (int)(Math.random()*4096+1);
-//Random rand = new Random();
-memoryLeft = maxMemory - memoryUsage;
-if(memoryUsage > memoryLeft)
- {
-	System.out.println("Not enough space");
- }
-
-	
-}/*
 public static int operationCycle()
 {
 	int cycles = (int)(Math.random()*25+25);
 	return cycles;
 }
-public  static String state(String process)
+
+public  static String state(String process, String state,String mem)
 {
 	
-	switch (process.toUpperCase())
+	switch (state.toUpperCase())
 	{
 	case "NEW":
-		return process;
+		memoryUsage = Integer.parseInt(mem);
+		memoryLeft = maxMemory - memoryUsage;
+		if(memoryLeft <= maxMemory)
+		{
+			state = "READY";
+			System.out.println("Memory left :"+memoryLeft);
+		}
+		else
+			state = "WAIT";
+		break;
 	case "READY":
 		return process;
 	case "RUN":
 		return process;
 	case "WAIT":
+		
 		return process;
 	case "BLOCKED":
 		return process;
 	case "EXIT":
+		memoryUsage = Integer.parseInt(mem);
+		memoryLeft +=  memoryUsage;
+		System.out.println("Memory left :"+ memoryLeft);
 		return process;
 	default:
 		System.out.println("Cannot do request\n");
@@ -101,7 +105,7 @@ public  static String state(String process)
 	String Error = ("Error");
 	return Error;
 	
-}
+}/*
 public void Threads()
 {
 	Thread thread = new Thread(this);
@@ -112,24 +116,7 @@ public void run() {
 	// TODO Auto-generated method stub
 	
 }
-/*public r userCommand(String command) 
-{
-	switch(command.toUpperCase())
-	{
-	case "CALCULATE":
-		
-		return command;
-	case "OUT":
-		return command;
-	case "YIELD":
-		return command;
-	case "I/O":
-		return command;
-	default:
-		System.out.println("Cannot do request\n");
-	}
-	String Error = ("Error");
-	return Error;
+ Error;
 }*/
 }
 

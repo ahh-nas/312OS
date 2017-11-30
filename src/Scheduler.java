@@ -1,63 +1,24 @@
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.IntStream;
-import javax.swing.*;
-import java.util.*;
+
 
 public class Scheduler {
+	static Clock clock = new Clock();
+	static int program = 0;
 	public static void RoundRobin(int processes[],int quantum, int n ) throws IOException
 	{
-		String filePath = "C:/Users/moussazs/Desktop/Paint.txt";
-		BufferedReader br = new BufferedReader(new FileReader(filePath));
-		String line = br.readLine();
-		int test;
-		while (line != null)
-		{
-			//System.out.println(line);
-			line = br.readLine();
-			String command[]=line.split(" ",2);
-			if (command[0].equals("CALCULATE")) {
-				String numberOfCycles;
-				numberOfCycles = command[1];
-				test = Integer.parseInt(numberOfCycles);
-				while(test != 0)
-				{
-					test--;
-				}
-				System.out.println(numberOfCycles);
-            }
-			 
-            else if(command[0].equals("YIELD"))
-            {
-            		System.out.println("YIELDING");
-            }
-			 
-            else if(command[0].equals("IO"))
-            {
-            		System.out.println("BLOCKED");
-            }
-			 
-            else if(command[0].equals("OUT"))
-            {
-            	
-            		System.out.println(command[1]);
-            
-            }
-			 
-  
-		}
-
-		br.close();
-	
+		
 		boolean RRdone= false;
 	
 		int count= 0;
@@ -156,9 +117,99 @@ return tempArray;
 
 	}
 
-	public static void main(String[] args) throws IOException 
+	public static void jobHandle() throws IOException
 	{
- 
+		
+		boolean rightInput = false;
+		while(rightInput == false)
+		{
+		System.out.println("Enter number of programs you would like to load: ");
+		Scanner userInput = new Scanner(System.in);
+		if(userInput.hasNextInt())
+		{
+		program  = userInput.nextInt();
+		rightInput = true;
+		}
+		else
+			System.out.println("Wrong input");
+			
+		
+		
+		}
+		for(int i = 0; i< program; i++)
+		{
+			
+		System.out.println("Enter Program you would like to load: ");
+		Scanner nextInput = new Scanner(System.in);
+		String input = nextInput.nextLine();
+		
+		String filePath = "C:/Users/Test/git/312OS/"+input +".txt";
+		Path myPAth = Paths.get(filePath);
+		String strings = Files.lines(myPAth).findFirst().get();
+		String state = OS.state(input, "New",strings);
+		BufferedReader br = new BufferedReader(new FileReader(filePath));
+		String line = br.readLine();
+		int test;
+		clock.getClock();
+		while (!line.trim().isEmpty() )
+		{
+			//System.out.println(line);
+			//if (line.trim().isEmpty())
+				//return;
+			//if(!line.isEmpty())
+			//{
+			line = br.readLine();
+			String command[]=line.split(" ",2);
+			if (command[0].equals("CALCULATE")) {
+				String numberOfCycles;
+				numberOfCycles = command[1];
+				test = Integer.parseInt(numberOfCycles);
+				clock.restartClock();
+				while(test != 0)
+				{
+					//System.out.println("Calculate " + test);
+					test--;
+					clock.advancedClock();
+				}
+				System.out.println("CALCULATED " + clock.getClock());
+				
+            }
+			//}
+			 
+            else if(command[0].equals("YIELD"))
+            {
+            		System.out.println("YIELDING");
+            }
+			 
+            else if(command[0].equals("IO"))
+            {
+            	
+            	clock.restartClock();
+            	int cycle = OS.operationCycle();
+            	System.out.println("BLOCKED");
+            	while(cycle !=0)
+            	{
+            		clock.advancedClock();
+            		cycle--;
+            	}
+            	System.out.println("How long the I/O burst lasted for: "+ clock.getClock());
+            }
+			 
+            else if(command[0].equals("OUT"))
+            {
+            	
+            		System.out.println(command[1]);
+            
+            }
+			if(line.trim().isEmpty())
+				OS.state(input, "EXIT",strings);
+			
+		}
+			
+	
+		
+		br.close();
+		}
 	}
 
 

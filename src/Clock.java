@@ -4,7 +4,7 @@ public class Clock {
 		private static int tick = 0;
 		
 		public static void execute() {
-			//execution here
+		
 		}
 		public static int getClock() {
 			return tick;
