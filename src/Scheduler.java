@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
@@ -15,7 +17,7 @@ import java.util.stream.IntStream;
 
 public class Scheduler {
 	static Clock clock = new Clock();
-	static int program = 0;
+	static int numberOfprograms = 0;
 	public static void RoundRobin(int processes[],int quantum, int n ) throws IOException
 	{
 		
@@ -119,31 +121,32 @@ return tempArray;
 
 	public static void jobHandle() throws IOException
 	{
-		
+		ArrayList<Process> obj = new ArrayList<Process>();
 		boolean rightInput = false;
+		Scanner userInput = new Scanner(System.in);
 		while(rightInput == false)
 		{
 		System.out.println("Enter number of programs you would like to load: ");
-		Scanner userInput = new Scanner(System.in);
 		if(userInput.hasNextInt())
 		{
-		program  = userInput.nextInt();
+		numberOfprograms = userInput.nextInt();
 		rightInput = true;
 		}
 		else
 			System.out.println("Wrong input");
-			
-		
-		
 		}
-		for(int i = 0; i< program; i++)
+		userInput.nextLine();
+		for(int i = 0; i< numberOfprograms; i++)
 		{
-			
-		System.out.println("Enter Program you would like to load: ");
+			System.out.println("Enter Program you would like to load: ");
+			//Process newProc = new Process(100,paint,a)
+			//obj.add(newProc);
+		}
+		System.out.println(Arrays.toString(obj.toArray()));
 		Scanner nextInput = new Scanner(System.in);
 		String input = nextInput.nextLine();
 		
-		String filePath = "C:/Users/Test/git/312OS/"+input +".txt";
+		String filePath = "C:/Users/Test/git/312OS/"+Process.getName() +".txt";
 		Path myPAth = Paths.get(filePath);
 		String strings = Files.lines(myPAth).findFirst().get();
 		String state = OS.state(input, "New",strings);
@@ -210,7 +213,7 @@ return tempArray;
 		
 		br.close();
 		}
-	}
+
 
 
 

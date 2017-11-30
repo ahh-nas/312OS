@@ -26,10 +26,10 @@ public class OS implements Runnable{
 	{
 		threads.add(new Thread());
 	}
-		System.out.println("Enter number of processes: ");
-		Scanner userInput = new Scanner(System.in);
-		int input = userInput.nextInt();
-		int proceses[]= new int[input];
+	System.out.println("Enter number of processes: ");
+	Scanner userInput = new Scanner(System.in);
+	int input = userInput.nextInt();
+	int proceses[]= new int[0];
 		System.out.println("Enter which scheduler you'd like to use" +"\n1:Round Robin" +"\n2:First Come First Serve" +"\n3:Shortest Job First");
 		Scheduler newSched = new Scheduler();
 		//TODO use the gui to pick which schduling alg. to use 

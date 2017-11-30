@@ -107,8 +107,10 @@ int a =0;
 				 System.out.println("loading");
 				 textArea.append(txtEnterCommand.getText()+"\n");
 				model.addRow(new Object[]{array[1], 1000000, "ditto", "sadf", "adsf", "asdf"});
-				 setProcessName(array[1]);
-				 txtEnterCommand.setText("");
+				String name = (array[1]);
+				//JOptionPane.showMessageDialog(null, name);
+				Process process= new Process(name);
+				 
 				 break;
 				 
 				 case "exe": 
