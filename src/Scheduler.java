@@ -139,14 +139,16 @@ return tempArray;
 		for(int i = 0; i< numberOfprograms; i++)
 		{
 			System.out.println("Enter Program you would like to load: ");
-			//Process newProc = new Process(100,paint,a)
-			//obj.add(newProc);
+			Process newProc = new Process("asdf");
+			obj.add(newProc);
+			System.out.println(obj.get(0).toString());
 		}
 		System.out.println(Arrays.toString(obj.toArray()));
 		Scanner nextInput = new Scanner(System.in);
 		String input = nextInput.nextLine();
 		
-		String filePath = "C:/Users/Test/git/312OS/"+Process.getName() +".txt";
+		String filePath = "C:/Users/Test/git/312OS/"+obj.get(0).getName() +".txt";
+		System.out.println(Process.getName());
 		Path myPAth = Paths.get(filePath);
 		String strings = Files.lines(myPAth).findFirst().get();
 		String state = OS.state(input, "New",strings);

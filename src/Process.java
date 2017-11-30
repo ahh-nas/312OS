@@ -1,4 +1,4 @@
-
+import javax.swing.*;
 public class Process {
 	
 	public static String name;
@@ -26,6 +26,13 @@ public class Process {
 		
 	}
 	
+	@Override
+	public String toString() {
+		return "Process [strings=" + strings + ", bursttime=" + bursttime + ", arrivaltime=" + arrivaltime
+				+ ", waittime=" + waittime + ", completiontime=" + completiontime + ", numberOfCycles=" + numberOfCycles
+				+ "]";
+	}
+
 	public int getNumberOfCycles() {
 		return numberOfCycles;
 	}
