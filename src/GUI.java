@@ -30,16 +30,12 @@ int a =0;
 	private JPanel contentPane;
 	private JTextField txtEnterCommand;
 	private JTable table_1;
-
-    	
-	public String[] array;
-	public String  thing;
-	
 	private JLabel lblArrivalTime;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
 	private JLabel lblLastCommand;
-
+	private String processName="";
+	public String array[];
 	
 
 	/**
@@ -72,92 +68,112 @@ int a =0;
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		JTable table = new JTable();
+		DefaultTableModel model = new DefaultTableModel(); 
+		JTable table = new JTable(model);
 		JScrollPane spTable = new JScrollPane(table);
 		JPanel panel = new JPanel();
 		panel.add(spTable);
 		
+
+		// Create a couple of columns 
+		model.addColumn("Process"); 
+		model.addColumn("Size"); 
+		model.addColumn("Arrival Time"); 
+		model.addColumn("Run Time"); 
+		model.addColumn("Status"); 
+		model.addColumn("Last Command"); 
+
+		// Append a row 
+		model.addRow(new Object[]{"s", 1000000, "ditto", "sadf", "adsf", "asdf"});
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setEditable(false);
 		txtEnterCommand = new JTextField();
+		String processName = "";
+		
 		txtEnterCommand.addActionListener(new ActionListener() {
-			@Override
+
 			public void actionPerformed(ActionEvent e) {
 				 String text = txtEnterCommand.getText();
-				  array=text.split(" ",2); //Splits the user data into two sub strings to separate the job file from the command
-				 int mid = text.length() / 2; //get the middle of the String
-				 String[] parts = {text.substring(0, mid),text.substring(mid)};
-				 thing = parts[1];
-				 String load = "load";
-				 String exe = "exe";
-				 String proc = "proc";
-				 String mem = "mem";
-				 String exit = "exit";
-				 String reset = "reset";
-
+				 array=text.split(" ",2); //Splits the user data into two sub strings to separate the job file from the command
+				 
+				
 			
+				// processName = array[1];
+				
+				 switch(array[0]) {
+				 
+				 case "load": 
+				 System.out.println("loading");
+				 textArea.append(txtEnterCommand.getText()+"\n");
+				model.addRow(new Object[]{array[1], 1000000, "ditto", "sadf", "adsf", "asdf"});
+				 setProcessName(array[1]);
+				 txtEnterCommand.setText("");
+				 break;
+				 
+				 case "exe": 
+				 System.out.println("executing");
+				 textArea.append(txtEnterCommand.getText()+"\n");
+				 break;
+				 
+				 case "proc":
+				 System.out.println("processesing");
+				 textArea.append(txtEnterCommand.getText()+"\n");
+				 break;
+				 
+				 case "mem": 
+				 System.out.println("mem");
+				 textArea.append(txtEnterCommand.getText()+"\n");
+				 break;
+				 
+				 case "reset": 
+				 System.out.println("reseting");
+				 textArea.append(txtEnterCommand.getText()+"\n");
+				 break;
+				 
+				 case "exit":
+				 textArea.append(txtEnterCommand.getText()+"\n");
+				 System.exit(0);
+				 break;
+				 default:
+				 {JOptionPane.showMessageDialog(null, "Invalid command");}
+				 break;
+				 
+				 }
+						 
 
-				 if (array[0].equals(load)) {
-	            	 System.out.println("loading");
-	            	 //textArea.append(txtEnterCommand.getText()+"\n");
-              
-	             }
-				 
-	             else if(array[0].equals(exe))
-	             {System.out.println("executing");
-	             textArea.append(txtEnterCommand.getText()+"\n");}
-				 
-	             else if(array[0].equals(proc))
-	             {System.out.println("Processing");
-	             textArea.append(txtEnterCommand.getText()+"\n");}
-				 			 
-	             else if(array[0].equals(mem))
-	             {System.out.println("mem used");
-	             textArea.append(txtEnterCommand.getText()+"\n");}
-				 
-	             else if(array[0].equals(reset))
-	             {textArea.append(txtEnterCommand.getText()+"\n");}//clear the space
-				 
-				 else if(array[0].equals(exit))
-	             {System.exit(0);} 
-				  
-	             else
-	             {JOptionPane.showMessageDialog(null, "Invalid command");}
-				 txtEnterCommand.setText("");//clears the text field after entering
-				 return;
 			}
 		
-		});
+			});
 			
 		
+		 txtEnterCommand.setText("");//clears the text field after entering
+		String s = getProcessName();
+
+		 txtEnterCommand.setColumns(10);
 			
-	
-		//array[0]=text.split(" ",2);
-		System.out.println(thing);
-		txtEnterCommand.setColumns(10);
+//			table_1 = new JTable();
+//			table_1.setEnabled(false);
+//			table_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+//		table_1.setModel(new DefaultTableModel(
+//		new Object[][] {
+//				
+//				
+//				{s, 1000000, "ditto", "sadf", "adsf", "asdf"},
+//				{"in my eyes", null, null, null, null, null},
+//				{null, null, null, null, null, null},
+//				{null, null, null, null, null, null},
+//				{null, null, null, null, null, null},
+//				{null, null, null, null, null, null},
+//				{null, null, null, null, null, null},
+//				{null, null, null, null, null, null},
+//			},
+//			new String[] {
+//				"Process", "Size", "Arrival Time", "Run Time", "Status", "Last Command"
+//			}
+//		));
 		
-		table_1 = new JTable();
-		table_1.setEnabled(false);
-		table_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		table_1.setModel(new DefaultTableModel(
-			new Object[][] {
 
-				{thing, null , "", "", null, null},
-
-				{"tears", 1000000, "ditto", "sadf", "adsf", "asdf"},
-				{"in my eyes", null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-			},
-			new String[] {
-				"Process", "Size", "Arrival Time", "Run Time", "Status", "Last Command"
-			}
-		));
 		
 		JLabel lblProcess = new JLabel("Process");
 		lblProcess.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
@@ -189,7 +205,7 @@ int a =0;
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addComponent(textArea, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
-						.addComponent(table_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
+						.addComponent(table, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
 						.addComponent(txtEnterCommand, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(8)
@@ -219,7 +235,7 @@ int a =0;
 						.addComponent(lblArrivalTime)
 						.addComponent(lblSize))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE)
+					.addComponent(table, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
@@ -227,8 +243,13 @@ int a =0;
 					.addContainerGap())
 		);
 		contentPane.setLayout(gl_contentPane);
-		}
+		
 }
-
-	
+	public void setProcessName(String s) {
+		processName = s;
+	}
+	public String getProcessName() {
+		return processName;
+	}
+}	
 
